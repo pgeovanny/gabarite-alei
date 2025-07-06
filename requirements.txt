@@ -1,0 +1,11 @@
+Flask==2.3.2
+Flask-SQLAlchemy==3.1.1
+Flask-Login==0.6.3
+Flask-Mail==0.9.1
+Flask-Migrate==4.0.4
+SQLAlchemy==2.0.41
+python-dotenv==1.0.0
+openai==0.27.0
+jinja2==3.1.2
+gunicorn>=20.1.0
+psycopg2-binary==2.9.7 ; platform_system != "Windows"

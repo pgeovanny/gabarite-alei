@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="text-center my-4">
+  <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" style="height:60px;">
+</div>
+<div class="card mb-4 shadow-sm">
+  <div class="card-body">
+    <h3 class="card-title mb-3">Filtrar Questões</h3>
+    <form method="get" class="row g-3">
+      <div class="col-md-2">
+        <input name="law" placeholder="Lei" class="form-control form-control-lg">
+      </div>
+      <div class="col-md-2">
+        <input name="article" placeholder="Artigo" class="form-control form-control-lg">
+      </div>
+      <div class="col-md-2">
+        <select name="type" class="form-select form-select-lg">
+          <option value="">Tipo</option><option>Certo/Errado</option><option>Múltipla escolha</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select name="difficulty" class="form-select form-select-lg">
+          <option value="">Nível</option><option>Fácil</option><option>Médio</option><option>Difícil</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select name="status" class="form-select form-select-lg">
+          <option value="">Status</option><option value="favorite">Favoritas</option><option value="wrong">Erradas</option><option value="unanswered">Não respondidas</option>
+        </select>
+      </div>
+      <div class="col-md-2 d-grid">
+        <button class="btn btn-primary btn-lg">Filtrar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<ul class="list-group">
+  {% for q in questions %}
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <a href="{{ url_for('questions.question_detail', q_id=q.id) }}" class="text-decoration-none text-dark">
+      {{ q.text[:100] }}...
+    </a>
+    <span class="badge bg-primary rounded-pill">{{ q.difficulty }}</span>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
